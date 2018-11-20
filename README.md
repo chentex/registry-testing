@@ -45,6 +45,14 @@ Found in a [PR][1] that the way to do it if you don't have any other maintenance
 docker run -d -p 5000:5000 --restart=always --name registry -v `pwd`/config.yml:/etc/docker/registry/config.yml registry:2.6.2
 ```
 
+## Run a TLS + Password Auth registry using config file
+
+docker run -d -p 443:443 --restart=always --name registry -v `pwd`/config.secure.yml:/etc/docker/registry/config.yml -v `pwd`/auth:/auth -v `pwd`/certs:/certs -v /registry:/var/lib/registry registry:2.6.2
+
+## Run a TLS + Read  Only registry using config file
+
+docker run -d -p 443:443 --restart=always --name registry -v `pwd`/config.airgapped.yml:/etc/docker/registry/config.yml -v `pwd`/auth:/auth -v `pwd`/certs:/certs -v /registry:/var/lib/registry registry:2.6.2
+
 
 ## Login
 

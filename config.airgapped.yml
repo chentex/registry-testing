@@ -7,10 +7,16 @@ storage:
     blobdescriptor: inmemory
   filesystem:
     rootdirectory: /var/lib/registry
+  maintenance:
+    readonly:
+      enabled: true
 http:
-  addr: :5000
+  addr: 0.0.0.0:443
   headers:
     X-Content-Type-Options: [nosniff]
+  tls:
+    certificate: /certs/domain.crt
+    key: /certs/domain.key
 health:
   storagedriver:
     enabled: true
